@@ -28,8 +28,8 @@ html {
 }
 
 .control-panel {
-    background-color: rgba(0, 0, 0, .6);
-    border: 2px solid rgba(255, 255, 255, .5);
+    background: repeating-linear-gradient(45deg, yellow, yellow 2em, black 2em, black 4em);
+    border: 2px solid darkgray;
     border-radius: .5em;
     position: absolute;
     right: 1em;
@@ -39,11 +39,12 @@ html {
     padding: 1em;
 }
 
-#control-panel-form {
+.control-panel-inner {
+    background-color: #4c4b4b;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex: 0 1 1em
 }
@@ -55,7 +56,7 @@ html {
     margin: 0 0 2.5em 0;
 }
 
-.levers{
+.levers {
     display: flex;
 }
 
@@ -63,6 +64,25 @@ html {
     transform: rotate(-90deg);
 }
 
+#password-field {
+    border: 3px solid yellow;
+    border-radius: 3px;
+    padding: 3px;
+    background-color: #f1f1f1;
+}
+
+#unlock-btn {
+    background-color: yellow;
+    border: 2px gray solid;
+    border-radius: 5px;
+    padding: 4px;
+}
+
 #launch-btn {
     margin: 3em 0 0 0;
+    width: 5em;
+    height: 2em;
+    border: darkgray 1px solid;
+    border-radius: 1em;
+    background-color: red;
 }
