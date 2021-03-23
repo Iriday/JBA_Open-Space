@@ -4,6 +4,7 @@ const passField = document.getElementById("password-field");
 const lunchBtn = document.getElementById("launch-btn");
 const checkBtns = document.getElementsByClassName("check-buttons")[0];
 const levers = document.getElementsByClassName("levers")[0];
+const rocket = document.getElementsByClassName("rocket")[0];
 
 function setDisabled(inputs, desabled = false) {
     const f = input => input.disabled = desabled
@@ -61,8 +62,35 @@ function disableControls() {
     setDisabled(lunchBtn, true)
 }
 
+function moveElem(elem, side, scalePercent) {
+    const values = window.getComputedStyle(elem);
+    const value = values.getPropertyValue(side).replace("px", "");
+    elem.style[side] = Number(value) * scalePercent + "px"
+}
+
+function initLunchBtn() {
+    lunchBtn.onclick = () => {
+        const id = setInterval(() => {
+            moveElem(rocket, "left", 1.003);
+            moveElem(rocket, "bottom", 1.003);
+
+            const values = window.getComputedStyle(rocket);
+            const leftVal = Number(values.getPropertyValue("left").replace("px", ""));
+            const bottomVal = Number(values.getPropertyValue("bottom").replace("px", ""));
+
+            if (window.screen.width < leftVal || window.screen.height < bottomVal) {
+                clearInterval(id);
+                if (window.confirm("Reload?")) {
+                    window.location.reload()
+                }
+            }
+        }, 1)
+    }
+}
+
 
 initUnlockBtn();
 initCheckBtns();
 initLevers();
 disableControls();
+initLunchBtn();
